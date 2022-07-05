@@ -54,6 +54,10 @@ subset:ImageDataGenerator snıfında validation_split argümanı ayarlandıysa t
 interpolation: Yüklenen görüntünün boyutu, target_size argümanıyla tanımlanan hedef boyutundan farklı ise, görüntüyü yeniden örneklemek için kullanılacak interpolasyon yöntemidir. Default değeri nearest'dir.
 
 
+Artık verileri train ve validation olarak 2 parçaya ayırdık. 
 
+Çıktı resmi:
+
+<img width="382" alt="Ekran Resmi 2022-07-05 16 48 19" src="https://user-images.githubusercontent.com/96236352/177343053-d8c4ae44-3c15-4eec-82ae-e49af277d394.png">
 
 
