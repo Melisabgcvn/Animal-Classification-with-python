@@ -13,10 +13,12 @@ Bilgisayarda dosya görünümü :
 !! Kullanılan bazı sınıflar, fonksiyonlar ve özellikleri:
 
 ##ImageDataGenerator Sınıfı##
+
 Mevcut verilerin üzerinde rasgele döndürme, kesme, kaydırma gibi işlemler yaoarak eğitim verilerini arttırmaya "Veri büyütme" denir.
 Gerçek zamanlı veri büyütme ile tensör görüntü verisi yığınları oluşturur.Veriler gruplar halinde döngüye alınır.
 
 ##tf.keras.preprocessing.image_dataset_from_directory##
+
 Veri kümemizi bir dizinden direkt olarak okutabilmemizi sağlar. Bu fonksiyon jpeg, png, bmp, gif formatlarını destekler.
 directory=verinin yer aldığı dizin
 
@@ -35,6 +37,7 @@ shuffle=verilerin karıştırılımasını sağlar. Böylecek overfitting engell
 seed argümanı rasgele değer alır. Amacı shuffle için değer verir.
 
 ##flow_from_directory##
+
 Bir ImageDataGenerator metodudur. ImageDataGenerator görüntüler için bir üreticidir.Gerçek zamanlı veri çeşitlendirme (real-time data augmentation) yaparak görüntü verilerini yığınlar olarak oluşturur.
 Veri çeşitlendirme, görüntü sınıflandırma, nesne algılama, görüntü bölütleme gibi pek çok yöntemle veri arttırma için kullanılır.
 
