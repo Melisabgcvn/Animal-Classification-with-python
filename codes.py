@@ -18,30 +18,45 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
     
     
 #Tensorflow ile veri yükleme işlemi yapıcaz.
-path = "raw-img" #bilgisayarımda kullanacağı dosyanın yolunu path adlı variable da tutucam.
-classes = os.listdir(path) #dosya içindeki sınıfların isimlerini görmek için
+path = "raw-img"
+#classes = os.listdir(path) #sınıfların isimlerini görmek için. Ama biz zaten labels="inferred dediğimiz için otomatik zaten isimleri görebileceğiz.
 
-#veri yükleme
+
 dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    "raw-img", batch_size=64, image_size=(224, 224))
-#batch_size aşağıda açıklanmıştır.
+    "raw-img", 
+    labels='inferred', 
+    batch_size=32, #tf.data.Dataset nesnesi her seferinde 32 tane görüntü döndürür.
+    image_size=(180, 180), #boyut
+    color_mode="rgb",
+    shuffle=True,
+    seed=0
+    )
+
+#print(dataset.class_names) 
+#labels="inferred" dediğimiz için otomatik olarak class_name özelliğini kullanabildik.
 
 #İkinci aşama olarak yüklenen veriler train, validation verilerine bölünmeli.
 
-train_datagen = ImageDataGenerator(
-        validation_split=0.25 #verilerimizi hangi oranda böleceğimizi söylüyoruz.
-          )
+train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1./255,
+                                   rotation_range=20,
+                                   width_shift_range=0.2,
+                                   height_shift_range=0.2,
+                                   horizontal_flip=True,
+                                   validation_split=0.2)
 
 train_generator = train_datagen.flow_from_directory(
         path,
         subset='training',
-        #veri büyütme :
-        target_size=(224, 224),
+        target_size=(180, 180), #görüntüler boyutlandırılır.
         batch_size=32,
         class_mode="categorical",
         shuffle=True,
-        seed=42
-        
+        seed=42,
+        save_to_dir=None,
+        save_prefix='',
+        save_format='png',
+        follow_links=False,
+        interpolation='nearest'
         )
 
 validation_generator = train_datagen.flow_from_directory(
@@ -52,23 +67,28 @@ validation_generator = train_datagen.flow_from_directory(
         class_mode="categorical",
         shuffle=True, #Verilmekte olan görüntünün sırasını karıştırmak  için
         seed=42 #Rastgele görüntü büyütme uygulamak ve görüntünün sırasını karıştırmak için 
+        
         )
 
-# =============================================================================  
-#Batch :
-#     Batch işleminde, veri seti batch değeri olarak belirlenen değere göre parçalara ayrılmakta ve her iterasyonda modelin eğitimi bu parça üzerinden yapılmaktadır.
-#     Bununla birlikte bazı durumlarda veri kendi içinde gruplanmış olabilmektedir.
-#     Bu durum veri seti içinde korelasyon oluşturacak; bu veri setinden seçilecek test setin de yüksek başarım vermesini sağlayacak böylece ezberleme (“overfitting”) olacaktır. 
-#     Bunu önlemek için eğitim başlamadan veri seti parçalara ayrılmadan önce veriseti karıştırılmalıdır (shuffle). Batch seçiminde verilerin rastgele seçilmesi önemlidir.
-#     Batch size küçük olması iyileştirme (reguralization) etkisi yaratmaktadır. Modele veri büyük gruplar halinde verildiğinde ezberleme daha fazla oluyor.
-#     Batch boyutunun diğer bir kıstası da bellek boyutudur. Eğer küçük belleğe sahip ortamda çalışıyorsanız, batch büyük tutmakta zorlanabilirsiniz. Bu nedenle modeli tasarlarken öncesinde kullanabileceğiniz maksimum batch değeri hesaplamak verimli olacaktır.
-#     
-# =============================================================================
-    
-    
+##ÇIKTI##
 # =============================================================================
 # Found 26179 files belonging to 10 classes.
 # Found 19638 images belonging to 10 classes. #train verileri
 # Found 6541 images belonging to 10 classes.  #validation verileri
+# =============================================================================
+
+
+#BU for döngüsü ile verilerden bazılarını görebiliriz. Örnek olarak ekledim. Şu an için gerekli değil.
+# =============================================================================
+# 
+# class_names = dataset.class_names
+# plt.figure(figsize=(10, 10))
+# for images, labels in dataset.take(1):
+#     for i in range(9):
+#         ax = plt.subplot(3, 3, i + 1)
+#         plt.imshow(images[i].numpy().astype("uint8"))
+#         plt.title(class_names[labels[i].numpy().argmax()])
+#         plt.axis("off")
+# 
 # =============================================================================
 
