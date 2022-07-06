@@ -64,3 +64,60 @@ Artık verileri train ve validation olarak 2 parçaya ayırdık.
 <img width="382" alt="Ekran Resmi 2022-07-05 16 48 19" src="https://user-images.githubusercontent.com/96236352/177343053-d8c4ae44-3c15-4eec-82ae-e49af277d394.png">
 
 
+#-------CNN-------#
+
+Bir modelin yaşam döngüsü vardır.
+#-----------------------#
+1.Model tanımlanır. #model = tf.keras.Sequential()
+2.Model derlenir. 
+3.Model fit edilir.
+4.Model değerlendirilir.
+5.Tahminlerde bulunulur.
+#------------------------#
+
+2.Modeli Derlemek/
+
+OPTİMİZASYON fonksiyonu seçimi:
+
+Amaç cnn'deki hatayı minimize etmektir. En sık kullanılan optimizasyon yöntemleri:
+
+1.SGD : tüm gradient’ler yerine rastgele olmak üzere bir kısım gradient’le ağırlıkları güncellemektedir.
+
+2.Momentum : SGD’de optimum nokta aranırken çok fazla salınım olmaktadır. Bu salınımları azaltmak ve dolaysıyla hedefe gitme hızını arttırmak için momentum yöntemi önerilmektedir. Bu yöntemde mevcut gradient’ler yerine momentumlu gradient kullanılmaktadır.
+
+3.Adagrad : SGD ve Momentum yöntemlerindeki sabit öğrenme katsayısı problemini ortadan kaldırmak için önerilmiştir. Gradientlerin karelerini alarak hesaplama yapar.
+
+4.RMSProp :Adagrad’da olduğu gibi sabit öğrenme katsayısı problemini çözmek için önerilmiştir. Aralarındaki fark ise,adagrad yöntemindeki gradientlerin karelerini almak yerine momentumlu gradientlerin karelerini almaktadır.
+
+5.Adadelta : Adadelta yönteminde, adagrad ve RMSProp yöntemlerinden farklı olarak öğrenme katsayısı seçme zorunluluğu yoktur. Öğrenme katsayısı yerine, geçerli ağırlıklar ile güncellenen ağırlıklar arasındaki farkı ifade eden delta değerlerinin karelerinin momentumlu
+toplamları kullanılmaktadır.
+
+6.Adam : Rmsprop ve momentum yöntemlerinin avantajlı yönlerinin birleştirilmesi ile önerilen gradient descent algoritmasıdır.
+
+
+
+KAYIP fonksiyonu seçimi:
+
+Kayıp fonksiyonları seçenekleri arasında :
+1.categorical_crossentropy : Etiketler ve tahminler arasındaki çapraz entropi kaybını hesaplar. Yani iki veya daha fazla etiket sınıfı olduğunda kullanılmaya uygundur. Bizim veri setimizde 10 sınıf olduğundan dolayı bunu kullanmak en uygunu gibi duruyor.
+
+2.binary_crossentropy : 2 sınıftan oluian problemlerden birine 1 diğerine 0 diyerek işaretler. (kedi=1 ve köpek=0) gibi. Ama bizim veri setimiz için uygun değildir.
+
+3.MeanSquaredError : Optimizasyon algoritması olarak SGD(stokastik gradyan düşümü) kullanılırken hata fonksiyonu olarak kullanılır. Regresyon hesaplamalarında tercih edilir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
