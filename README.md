@@ -71,9 +71,13 @@ Bir modelin yaşam döngüsü vardır.
 #-----------------------#
 
 1.Model tanımlanır. #model = tf.keras.Sequential()
+
 2.Model derlenir. 
+
 3.Model fit edilir.
+
 4.Model değerlendirilir.
+
 5.Tahminlerde bulunulur.
 
 #------------------------#
