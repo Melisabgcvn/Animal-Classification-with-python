@@ -106,6 +106,7 @@ toplamları kullanılmaktadır.
 KAYIP fonksiyonu seçimi:
 
 Kayıp fonksiyonları seçenekleri arasında :
+
 1.categorical_crossentropy : Etiketler ve tahminler arasındaki çapraz entropi kaybını hesaplar. Yani iki veya daha fazla etiket sınıfı olduğunda kullanılmaya uygundur. Bizim veri setimizde 10 sınıf olduğundan dolayı bunu kullanmak en uygunu gibi duruyor.
 
 2.binary_crossentropy : 2 sınıftan oluian problemlerden birine 1 diğerine 0 diyerek işaretler. (kedi=1 ve köpek=0) gibi. Ama bizim veri setimiz için uygun değildir.
