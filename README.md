@@ -67,12 +67,15 @@ Artık verileri train ve validation olarak 2 parçaya ayırdık.
 #-------CNN-------#
 
 Bir modelin yaşam döngüsü vardır.
+
 #-----------------------#
+
 1.Model tanımlanır. #model = tf.keras.Sequential()
 2.Model derlenir. 
 3.Model fit edilir.
 4.Model değerlendirilir.
 5.Tahminlerde bulunulur.
+
 #------------------------#
 
 2.Modeli Derlemek/
@@ -104,19 +107,6 @@ Kayıp fonksiyonları seçenekleri arasında :
 2.binary_crossentropy : 2 sınıftan oluian problemlerden birine 1 diğerine 0 diyerek işaretler. (kedi=1 ve köpek=0) gibi. Ama bizim veri setimiz için uygun değildir.
 
 3.MeanSquaredError : Optimizasyon algoritması olarak SGD(stokastik gradyan düşümü) kullanılırken hata fonksiyonu olarak kullanılır. Regresyon hesaplamalarında tercih edilir.
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
