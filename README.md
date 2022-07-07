@@ -115,5 +115,45 @@ Kayıp fonksiyonları seçenekleri arasında :
 3.MeanSquaredError : Optimizasyon algoritması olarak SGD(stokastik gradyan düşümü) kullanılırken hata fonksiyonu olarak kullanılır. Regresyon hesaplamalarında tercih edilir.
 
 
+AKTİVASYON Fonksiyonları:
+
+1.Step Fonksiyonu: Bir eşik değeri alarak ikili bir sınıflandırma çıktısı (0 yada 1) üretir.
+
+2.Sigmoid Fonksiyonu: En yaygın kullanılan aktivasyon fonksiyonlarından birisidir, [0,1] aralığında çıktı üretir.
+
+3.Tanh Fonksiyonu: [-1,1] aralığında çıktı üreten doğrusal olmayan bir fonksiyondur.
+
+4.ReLU Fonksiyonu: Doğrultulmuş lineer birim (rectified linear unit- RELU) doğrusal olmayan bir fonksiyondur. ReLU fonksiyonu negatif girdiler için 0 değerini alırken, x pozitif girdiler için x değerini almaktadır. Genel olarak iyi sonuç verir.
+
+5.Softmax Fonksiyonu: Çoklu sınıflandırma problemleri için kullanılan bu fonksiyon, verilen her bir girdinin bir sınıfa ait olma olasılığını gösteren [0,1] arası çıktılar üretmektedir. Bizim problemimiz için uygun gözüküyor.
+
+
+##LAYERS##
+
+
+<img width="532" alt="Ekran Resmi 2022-07-07 12 56 54" src="https://user-images.githubusercontent.com/96236352/177746776-a1889b27-382c-42d1-9c63-1094f8b952d3.png">
+
+
+İlk 2 katmanımız conv2d katmanıdır. Bunlar 2 boyutlu matrisler olarak görülen girdi görüntüleri ile ilgilenir.
+
+İlk katmanımızda 64, ikinci katmanımızda 32 düğüm vardır. Bu sayılar veri kümesinin boyutuna göre değiştirilebilir. Şİmdilik denemeleri bunlar üstünden yapıcam, sonrasında değiştirilebilir.
+
+kernel_size : (çekirdek boyutu) evrişim için filtre matrisinin boyutudur yani 3 çekirdek boyutu, 3x3 filtre matrisine sahip olduğumuz anlamına gelir.
+
+activation : katman için aktivasyon fonksiyonudur. 
+
+input_shape : Keras'ta girdi katmanının kendisi bir katman değil tensördür. İlk gizli katmana gönderidğimiz başlangıç tensörüdür. Bu tensör, eğitim verilerimiz ile aynı şekile sahip olmalıdır. Renk kanalını girdi olarak rgb yani 3 kanal verdiysek bu katmanda da 3 olmalıdır. Girdi pikselleri 50x50 ise burada da öyle olmalıdır. 
+
+Flatten() : Conv2d katmanları ve Dense katmanları arasında flatten yani düzleştirme işlemi yapılır. Düzleştirme katmanlar arasında bir bağlantı görevi görür. 
+
+
+<img width="308" alt="Ekran Resmi 2022-07-07 13 00 36" src="https://user-images.githubusercontent.com/96236352/177747623-917ec2b5-41c1-4efb-bbe5-95e34e8ee2dd.png">
+
+Dense : Çıktı için kullanacağımız katman türüdür. 
+
+
+
+3.Modeli Fit Etmek --------
+
 
 
