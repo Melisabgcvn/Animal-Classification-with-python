@@ -7,8 +7,11 @@ import shutil
 import random
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.keras import layers
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras import layers, models
+from tensorflow.keras import optimizers
+from keras.models import Sequential
+from keras.layers import Dense, Conv2D, Flatten
 
 
 #diskte bulunann verileri yüklemek için birden fazla yöntem vardır. Bunlar :
@@ -91,4 +94,21 @@ validation_generator = train_datagen.flow_from_directory(
 #         plt.axis("off")
 # 
 # =============================================================================
+
+
+#-------------------------------CNN MODEL-----------------------------------------
+#Convolutional neural network (Evrişimsel Siinir Ağları)
+
+model = tf.keras.Sequential()
+#Kerasta ki API uygulamasına tf.keras denir. 
+
+#modelin katmanlarını oluşturmak
+#modele katman eklemek için add() fonksiyonu kullanılır.
+model.add(Conv2D(64, kernel_size=3, activation="relu", input_shape=(28,28,3)))
+model.add(Conv2D(32, kernel_size=3, activation="relu"))
+model.add(Flatten())
+model.add(Dense(10, activation="softmax"))
+#10 tane sınıfımız olduğu için 10 kullandım.
+
+
 
