@@ -20,11 +20,12 @@ Gerçek zamanlı veri büyütme ile tensör görüntü verisi yığınları olu�
 ##tf.keras.preprocessing.image_dataset_from_directory##
 
 Veri kümemizi bir dizinden direkt olarak okutabilmemizi sağlar. Bu fonksiyon jpeg, png, bmp, gif formatlarını destekler.
+
 directory=verinin yer aldığı dizin
 
-labels=inferred denirse dizin altında her biri bir sınıfa ait görüntüleri içeren alt dizinler olmalı demektir. Bizim örneğimizde de var.
+labels = inferred denirse dizin altında her biri bir sınıfa ait görüntüleri içeren alt dizinler olmalı demektir. Bizim örneğimizde de var.
 
-class_names=labels=inferred olarak seçildiğinde kullanılabilir. Sınıf isimlerini gösterir.
+class_names = "labels=inferred" olarak seçildiğinde kullanılabilir. Sınıf isimlerini gösterir.
 
 batch_size = yığın büyüklüğüdür ve default değeri 32'dir.
 
