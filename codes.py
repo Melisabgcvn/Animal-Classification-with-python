@@ -110,5 +110,50 @@ model.add(Flatten())
 model.add(Dense(10, activation="softmax"))
 #10 tane sınıfımız olduğu için 10 kullandım.
 
+model.summary()
+
+#modeli derleyelim
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+
+history = model.fit(
+    train_generator,
+    epochs=10,
+    validation_data=validation_generator,
+    steps_per_epoch=25,
+    verbose=2,
+)
+model.fit_generator(train_generator, 
+                    steps_per_epoch=100,
+                    epochs =2, 
+                    validation_data=validation_generator, 
+                    validation_steps = 50,
+                    verbose=2)
+
+
+
+#grafikleri çizdirmek
+train_acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+train_loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+
+epochs = 10 
+print("y")
+plt.plot(epochs, train_acc, 'b', label='Training Accuracy')
+plt.plot(epochs, val_acc, 'r', label='Validation Accuracy')
+plt.title('Training and Validation Accuracy')
+plt.legend()
+plt.figure()
+plt.show()
+print("z")
+plt.plot(epochs, train_loss, 'b', label='Training Loss')
+plt.plot(epochs, val_loss, 'r', label='Validation Loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+plt.show()
+
 
 
