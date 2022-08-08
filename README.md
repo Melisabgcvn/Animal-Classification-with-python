@@ -152,8 +152,21 @@ Flatten() : Conv2d katmanları ve Dense katmanları arasında flatten yani düzl
 Dense : Çıktı için kullanacağımız katman türüdür. 
 
 
-
 3.Modeli Fit Etmek --------
+
+history = model.fit(
+    train_generator,
+    epochs=1,
+    validation_data=validation_generator,
+    steps_per_epoch=25,
+    verbose=2,
+)
+
+
+
+
+
+
 
 
 
