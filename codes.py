@@ -155,14 +155,3 @@ plt.show()
 
 #confusion_matrix
 plot_confusion_matrix(validation_generator, train_generator)
-
-#prediction func
-
-scaler=MinMaxScaler(feature_range=(0,1))
-scaler.fit(validation_generator)
-print("a")
-predict = model.predict(validation_generator)
-print("b")
-predict = scaler.inverse_transform(predict)
-print("c")
-print("prediction shape:", predict.shape)
