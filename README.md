@@ -1,4 +1,4 @@
-# Animal-Classification-with-python
+# Animal-Classification-in-python
 
 Bilgisayarda dosya görünümü :
 
@@ -162,11 +162,15 @@ history = model.fit(
     verbose=2,
 )
 
+#Model Katmanları
 
 
+<img width="452" alt="Ekran Resmi 2022-08-09 11 49 29" src="https://user-images.githubusercontent.com/96236352/183606834-c35e125f-775a-4d36-a79d-6358f357c0b2.png">
 
 
+Epoch değerlerini test esnasında daha hızlı olsun diye 2 verdim. Normalde 10 vermek daha mantıklı.
 
 
+<img width="518" alt="Ekran Resmi 2022-08-09 11 50 27" src="https://user-images.githubusercontent.com/96236352/183607030-0f9d4db5-99b1-4734-a5ee-ac26c420565c.png">
 
 
