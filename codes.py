@@ -1,10 +1,6 @@
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
-import os, sys
-import cv2
-import shutil
-import random
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -12,6 +8,8 @@ from tensorflow.keras import layers, models
 from tensorflow.keras import optimizers
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, Flatten
+from easycm import plot_confusion_matrix
+from sklearn.preprocessing import MinMaxScaler
 
 
 #diskte bulunann verileri yüklemek için birden fazla yöntem vardır. Bunlar :
@@ -141,19 +139,30 @@ val_loss = history.history['val_loss']
 
 
 epochs = 10 
-print("y")
+#Accuracy grafiği
 plt.plot(epochs, train_acc, 'b', label='Training Accuracy')
 plt.plot(epochs, val_acc, 'r', label='Validation Accuracy')
 plt.title('Training and Validation Accuracy')
 plt.legend()
 plt.figure()
 plt.show()
-print("z")
+#Loss grafiği
 plt.plot(epochs, train_loss, 'b', label='Training Loss')
 plt.plot(epochs, val_loss, 'r', label='Validation Loss')
 plt.title('Training and Validation Loss')
 plt.legend()
 plt.show()
 
+#confusion_matrix
+plot_confusion_matrix(validation_generator, train_generator)
 
+#prediction func
 
+scaler=MinMaxScaler(feature_range=(0,1))
+scaler.fit(validation_generator)
+print("a")
+predict = model.predict(validation_generator)
+print("b")
+predict = scaler.inverse_transform(predict)
+print("c")
+print("prediction shape:", predict.shape)
